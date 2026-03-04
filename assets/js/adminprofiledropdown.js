@@ -1,10 +1,19 @@
 function toggleProfileDropdown() {
-    document.getElementById('profileDropdown').classList.toggle('show');
+    const dropdown = document.getElementById("profileDropdown");
+    const section = document.querySelector(".profile-section");
+
+    dropdown.classList.toggle("show");
+    section.classList.toggle("active");
 }
 
-document.addEventListener('click', function(e) {
-    const section = document.querySelector('.profile-section');
-    if (!section.contains(e.target)) {
-        document.getElementById('profileDropdown').classList.remove('show');
+/* Close when clicking outside */
+document.addEventListener("click", function (e) {
+    const profileSection = document.querySelector(".profile-section");
+    const dropdown = document.getElementById("profileDropdown");
+
+    if (!profileSection.contains(e.target)) {
+        dropdown.classList.remove("show");
+        profileSection.classList.remove("active");
     }
 });
+

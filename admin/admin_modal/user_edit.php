@@ -27,6 +27,13 @@
                             <option value="admin">Admin</option>
                         </select>
                     </div>
+                      <div class="mb-3">
+                        <label for="editRole" class="form-label">Account Status</label>
+                        <select class="form-control" id="editAccountStatus" name="account_status" required>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>

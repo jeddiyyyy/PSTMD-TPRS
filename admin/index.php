@@ -60,10 +60,13 @@ if ($_SESSION['role'] === 'admin') {
 <script src="../assets/js/sweetalert2/sweetalert2.all.min.js"></script>
 <script src="../assets/js/bootstrap/bootstrap.min.js"></script>
 
+
 <!-- SCRIPT FUNCTIONS -->
+<script src="../assets/js/adminfilter.js"></script>
 <script src="../assets/js/adminusermanagement.js"></script>
 <script src="../assets/js/loginlogout.js"></script>
 <script src="../assets/js/adminprofiledropdown.js"></script>
+
 
 </body>
 </html>

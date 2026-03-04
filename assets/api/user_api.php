@@ -11,7 +11,7 @@ if ($_SESSION['role'] !== 'admin') {
 
 $action = $_GET['action'] ?? $_POST['action'] ?? null;
 
-// CREATE USER
+// CREATE USER PROCESS
 if ($action === 'create') {
     $name = trim($_POST['name'] ?? '');
     $username = trim($_POST['username'] ?? '');
@@ -70,13 +70,17 @@ if ($action === 'get') {
     exit;
 }
 
-// UPDATE USER
+// EDIT USER PROCESS
 if ($action === 'update') {
     $id = intval($_POST['id'] ?? 0);
     $name = trim($_POST['name'] ?? '');
     $username = trim($_POST['username'] ?? '');
     $role = $_POST['role'] ?? 'user';
     $password = $_POST['password'] ?? '';
+    $account_status = $_POST['account_status'] ?? 'active';
+
+    //Convert status to Database
+    $delete_status =($account_status ==='inactive') ?1 : NULL;
 
     // Validation
     if ($id <= 0 || empty($name) || empty($username)) {
@@ -95,13 +99,12 @@ if ($action === 'update') {
 
     // Update password if provided
     if (!empty($password)) {
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        $update_stmt = $conn->prepare("UPDATE users SET name=?, username=?, password=?, role=? WHERE id=?");
-        $update_stmt->bind_param("ssssi", $name, $username, $hashed_password, $role, $id);
-    } else {
-        $update_stmt = $conn->prepare("UPDATE users SET name=?, username=?, role=? WHERE id=?");
-        $update_stmt->bind_param("sssi", $name, $username, $role, $id);
-    }
+    $update_stmt = $conn->prepare("UPDATE users SET name=?, username=?, password=?, role=?, delete_status=? WHERE id=?");
+    $update_stmt->bind_param("ssssii", $name, $username, $hashed_password, $role, $delete_status, $id);
+} else {
+    $update_stmt = $conn->prepare("UPDATE users SET name=?, username=?, role=?, delete_status=? WHERE id=?");
+    $update_stmt->bind_param("sssii", $name, $username, $role, $delete_status, $id);
+}
 
     if ($update_stmt->execute()) {
         echo json_encode(['success' => true, 'message' => 'User updated successfully']);
@@ -111,7 +114,7 @@ if ($action === 'update') {
     exit;
 }
 
-// DELETE USER
+// DELETE USER PROCESS
 if ($action === 'delete') {
     $id = intval($_POST['id'] ?? $_GET['id'] ?? 0);
 
@@ -139,7 +142,7 @@ if ($action === 'delete') {
 
 // GET ALL USERS
 if ($action === 'list' || empty($action)) {
-    $stmt = $conn->prepare("SELECT id, name, username, role, account_status FROM users WHERE delete_status = 0 OR delete_status IS NULL ORDER BY id DESC");
+    $stmt = $conn->prepare("SELECT id, name, username, role FROM users WHERE delete_status = 0 OR delete_status IS NULL ORDER BY id DESC");
     $stmt->execute();
     $result = $stmt->get_result();
     $users = [];
