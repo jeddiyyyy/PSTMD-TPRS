@@ -10,7 +10,7 @@ $(document).ready(function () {
         $(".btn-text").text("Please wait...");
 
         $.ajax({
-            url: "assets/php/login.php", // use relative path (safer)
+            url: "assets/php/login.php",
             type: "POST",
             data: formData,
             dataType: "json",
@@ -75,7 +75,7 @@ $(document).ready(function () {
             if (result.isConfirmed) {
 
                 $.ajax({
-                    url: "/pstmdtprs/assets/php/logout.php", // use absolute path (safer)
+                    url: "../assets/php/logout.php",
                     type: "POST",
                     dataType: "json",
 
@@ -86,11 +86,11 @@ $(document).ready(function () {
                             Swal.fire({
                                 icon: "success",
                                 title: "Logged Out",
-                                text: response.message,
+                                text: "Thank you for using TPRS!",
                                 timer: 1500,
                                 showConfirmButton: false
                             }).then(() => {
-                                window.location.href = "/pstmdtprs/index.php";
+                                window.location.href = "../index.php";
                             });
 
                         } else {

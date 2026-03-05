@@ -5,7 +5,7 @@
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.10);
     overflow: hidden;
     width: 100%;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -122,12 +122,12 @@
 }
 
 .user-table thead th:nth-child(1) { width: 20%; }   /* ID */
-.user-table thead th:nth-child(2) { width: 25%; }  /* Username */
+.user-table thead th:nth-child(2) { width: 30%; }  /* Username */
 .user-table thead th:nth-child(3) { width: 50%; }  /* Full Name */
 .user-table thead th:nth-child(4) { width: 45%; }  /* Role */
 .user-table thead th:nth-child(5) { width: 45%; }  /* Login Status */
 .user-table thead th:nth-child(6) { width: 45%; }  /*Account Status */
-.user-table thead th:nth-child(7) { width: 65%; }  /* Actions */
+.user-table thead th:nth-child(7) { width: 80%; }  /* Actions */
 
 .user-table thead tr {
     background: linear-gradient(135deg, #e8f5e9, #c8e6c9);

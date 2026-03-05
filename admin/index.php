@@ -62,9 +62,9 @@ if ($_SESSION['role'] === 'admin') {
 
 
 <!-- SCRIPT FUNCTIONS -->
+<script src="../assets/js/loginlogout.js"></script>
 <script src="../assets/js/adminfilter.js"></script>
 <script src="../assets/js/adminusermanagement.js"></script>
-<script src="../assets/js/loginlogout.js"></script>
 <script src="../assets/js/adminprofiledropdown.js"></script>
 
 
