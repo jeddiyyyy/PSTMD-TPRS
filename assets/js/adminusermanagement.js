@@ -55,7 +55,6 @@ function editUserModal(userId) {
                 document.getElementById('editUsername').value = data.data.username;
                 document.getElementById('editRole').value = data.data.role;
                 document.getElementById('editPassword').value = '';
-                
                 const modal = new bootstrap.Modal(document.getElementById('editUserModal'));
                 modal.show();
             } else {

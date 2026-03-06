@@ -56,5 +56,5 @@ sortAscBtn.addEventListener("click", () => {
     });
 
     rowsArray.forEach(row => tbody.appendChild(row));
-    ascending = !ascending; // toggle for next click
+    ascending = !ascending;
 });

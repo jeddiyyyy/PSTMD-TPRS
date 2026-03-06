@@ -1,13 +1,14 @@
-// LOGIN PROCESS
+//LOGIN PROCESS
 $(document).ready(function () {
-
     $("#loginForm").on("submit", function (e) {
         e.preventDefault();
 
-        const formData = $(this).serialize();
+        const $form = $(this);
+        const formData = $form.serialize();
+        const $btn = $("#loginsubmit");
 
-        $("#loginsubmit").prop("disabled", true);
-        $(".btn-text").text("Please wait...");
+        $btn.prop("disabled", true);
+        $(".btn-text").text("Logging you in... please wait");
 
         $.ajax({
             url: "assets/php/login.php",
@@ -34,15 +35,16 @@ $(document).ready(function () {
                     Swal.fire({
                         icon: "error",
                         title: "Login Failed",
-                        text: response.message || "Invalid credentials.",
+                        text: response.message || "Invalid credentials."
                     });
 
-                    $("#loginsubmit").prop("disabled", false);
+                    $form[0].reset();
+                    $btn.prop("disabled", false);
                     $(".btn-text").text("Login");
                 }
             },
 
-            error: function (xhr, status, error) {
+            error: function (xhr) {
 
                 console.error("Login AJAX Error:", xhr.responseText);
 
@@ -52,14 +54,15 @@ $(document).ready(function () {
                     text: "Something went wrong. Please try again."
                 });
 
-                $("#loginsubmit").prop("disabled", false);
+                $form[0].reset();
+                $btn.prop("disabled", false);
                 $(".btn-text").text("Login");
             }
         });
     });
 
 
-    // LOGOUT PROCESS
+//LOGOUT PROCESS
     $(document).on("click", ".btn-logout", function (e) {
         e.preventDefault();
 
@@ -72,37 +75,37 @@ $(document).ready(function () {
             confirmButtonText: "Yes, Logout"
         }).then((result) => {
 
-            if (result.isConfirmed) {
+            if (!result.isConfirmed) return;
 
-                $.ajax({
-                    url: "../assets/php/logout.php",
-                    type: "POST",
-                    dataType: "json",
+            $.ajax({
+                url: "../assets/php/logout.php",
+                type: "POST",
+                dataType: "json",
 
-                    success: function (response) {
+                success: function (response) {
 
-                        if (response.status === "success") {
+                    if (response.status === "success") {
 
-                            Swal.fire({
-                                icon: "success",
-                                title: "Logged Out",
-                                text: "Thank you for using TPRS!",
-                                timer: 1500,
-                                showConfirmButton: false
-                            }).then(() => {
-                                window.location.href = "../index.php";
-                            });
+                        Swal.fire({
+                            icon: "success",
+                            title: "Logged Out",
+                            text: "Thank you for using TPRS!",
+                            timer: 1500,
+                            showConfirmButton: false
+                        }).then(() => {
+                            window.location.href = "../index.php";
+                        });
 
-                        } else {
-                            Swal.fire("Error", response.message, "error");
-                        }
-                    },
-
-                    error: function () {
-                        Swal.fire("Error", "Logout failed.", "error");
+                    } else {
+                        Swal.fire("Error", response.message || "Logout failed.", "error");
                     }
-                });
-            }
+                },
+
+                error: function () {
+                    Swal.fire("Error", "Logout failed.", "error");
+                }
+            });
+
         });
     });
 

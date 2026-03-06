@@ -15,6 +15,7 @@ if (!isset($_SESSION['user_id'])) {
     <link rel="stylesheet" href="../assets/css/materials/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/admindex.css">
     <link rel="stylesheet" href="../assets/css/admintable.css">
+    <link rel="stylesheet" href="../assets/css/usertable.css">
     <link rel="icon" href="../assets/icon/PSTMD.png" type="image/x-icon">
 </head>
 

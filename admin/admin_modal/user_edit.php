@@ -27,7 +27,7 @@
                             <option value="admin">Admin</option>
                         </select>
                     </div>
-                      <div class="mb-3">
+                    <div class="mb-3">
                         <label for="editRole" class="form-label">Account Status</label>
                         <select class="form-control" id="editAccountStatus" name="account_status" required>
                             <option value="active">Active</option>

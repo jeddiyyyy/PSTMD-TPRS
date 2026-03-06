@@ -2,18 +2,23 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-success text-white">
-                <h5 class="modal-title" id="addUserLabel">Add New Record</h5>
+                <h5 class="modal-title" id="addUserLabel">ADD NEW RECORD</h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <!-- REQUIRED INFORMATION -->
             <form id="addUserForm">
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="addName" class="form-label">Full Name *</label>
-                        <input type="text" class="form-control" id="addName" name="name" required>
+                        <label for="caseno" class="form-label">Case Number</label>
+                        <input type="text" class="form-control" id="caseno">
                     </div>
                     <div class="mb-3">
-                        <label for="addUsername" class="form-label">Username *</label>
-                        <input type="text" class="form-control" id="addUsername" name="username" required>
+                        <label for="company" class="form-label">Company Name</label>
+                        <input type="text" class="form-control" id="company" name="comname" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="addUsername" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
                     </div>
                     <div class="mb-3">
                         <label for="addPassword" class="form-label">Password *</label>

@@ -1,0 +1,80 @@
+.usercard-body {
+    padding: 1.75rem;
+    background: #f9fbf9;
+}
+
+.franchise-table-wrapper {
+    max-height: 360px;
+    overflow-y: auto;
+    border-radius: 10px;
+    background: #ffffff;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+}
+
+
+.franchise-table {
+    width: 100%;
+    min-width: 600px;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    background: #fff;
+    table-layout: fixed;
+}
+
+.user-filters {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.user-filters input,
+.user-filters select {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    min-width: 150px;
+}
+
+.franchise-table thead th:nth-child(1) { width: 30%; }   /*CASE NUMBER*/
+.franchise-table thead th:nth-child(2) { width: 30%; }  /*TODA*/
+.franchise-table thead th:nth-child(3) { width: 30%; }  /*COMPANY NAME*/
+.franchise-table thead th:nth-child(4) { width: 30%; }  /*NAME*/
+.franchise-table thead th:nth-child(5) { width: 30%; }  /*TODA STATUS*/
+.franchise-table thead th:nth-child(6) { width: 30%; }  /*STATUS*/
+.franchise-table thead th:nth-child(7) { width: 30%; }  /*ACTIONS*/
+
+.franchise-table thead tr {
+    background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+}
+
+.franchise-table thead th {
+    padding: 0.9rem 1.1rem;
+    text-align: left;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #1b5e20;
+    border-bottom: 2px solid #a5d6a7;
+    white-space: nowrap;
+}
+
+.franchise-table tbody tr {
+    border-bottom: 1px solid #f0f7f0;
+    transition: background 0.15s ease;
+}
+
+.franchise-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.franchise-table tbody tr:hover {
+    background: #daffda;
+}
+
+.franchise-table tbody td {
+    padding: 0.85rem 1.1rem;
+    color: #000000;
+    font-weight: 600;
+    vertical-align: middle;
+}
