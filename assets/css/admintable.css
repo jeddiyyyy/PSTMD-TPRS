@@ -122,7 +122,7 @@
 }
 
 .user-table thead th:nth-child(1) { width: 20%; }   /* ID */
-.user-table thead th:nth-child(2) { width: 30%; }  /* Username */
+.user-table thead th:nth-child(2) { width: 40%; }  /* Username */
 .user-table thead th:nth-child(3) { width: 50%; }  /* Full Name */
 .user-table thead th:nth-child(4) { width: 45%; }  /* Role */
 .user-table thead th:nth-child(5) { width: 45%; }  /* Login Status */

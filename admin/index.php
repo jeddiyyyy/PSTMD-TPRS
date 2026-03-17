@@ -1,7 +1,6 @@
 <?php
 session_start();
-include "../config/config.php";
-include "../admin/admin_modal/user_delete.php";
+include_once "../config/config.php";
 if (!isset($_SESSION['user_id'])) {
     header("Location: ../index.php");
     exit;
@@ -35,24 +34,25 @@ if (!isset($_SESSION['user_id'])) {
 
 <?php
 $page = $_GET['page'] ?? 'dashboard';
-
-
 // All ADMINS are directed to admindex.php
 if ($_SESSION['role'] === 'admin') {
     if ($page === 'add_user') {
-        include "modal/user_add.php";
+        include "admin_modal/user_add.php"; // add user
     } elseif ($page === 'user_edit' && isset($_GET['id'])) {
-        include "modal/user_add.php";
+        include "admin_modal/user_edit.php"; // edit user
     } elseif ($page === 'delete_user' && isset($_GET['id'])) {
-        include "modal/delete_user.php";
+        include "admin_smodal/delete_user.php"; // delete user
     } else {
 
         include "admin_modal/admindex.php";
     }
     // All USERS are directed to userindex.php
 } elseif ($_SESSION['role'] === 'user') {
-    // Default user view: show userindex.php (case records)
+    if ($page ==='profile_edit') {
+    include "user_modal/profile_edit.php";
+    } else {
     include "user_modal/userindex.php";
+    }
 }
 ?>
 
@@ -64,9 +64,13 @@ if ($_SESSION['role'] === 'admin') {
 
 <!-- SCRIPT FUNCTIONS -->
 <script src="../assets/js/loginlogout.js"></script>
+
+<!-- ADMIN SCRIPTS -->
 <script src="../assets/js/adminfilter.js"></script>
 <script src="../assets/js/adminusermanagement.js"></script>
 <script src="../assets/js/adminprofiledropdown.js"></script>
+
+<!-- USER SCRIPTS -->
 
 
 </body>

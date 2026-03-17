@@ -15,7 +15,7 @@ $stmt = $conn->prepare("
 ");
 
 if ($stmt) {
-    $stmt->bind_param("i", $_SESSION['user_id']); //exclude current user logged In
+    $stmt->bind_param("i", $_SESSION['user_id']);
     $stmt->execute();
     $result = $stmt->get_result();
 
@@ -42,7 +42,6 @@ if ($stmt) {
     </span>
             <div class="profile-dropdown" id="profileDropdown">
             <button class="btn-editprofile" onclick="editUserModal(<?= $_SESSION['user_id'] ?>)">Edit Profile</button>
-            <button class="btn-settings" onclick="">Settings</button>
             <button class="btn-logout" onclick="logout()">Logout</button>
             </div>
         </div>
@@ -51,6 +50,7 @@ if ($stmt) {
     <div class="card-body">
     <button type="button" class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#addUserModal">+ Add User</button>
     <button type="button" class="btn btn-successbtn mb-3" id="sortAscBtn">Sort ID Toggle</button>
+
     <!-- FILTER SECTION -->
         <div class="user-filters mb-3">
         <input type="text" id="filterName" placeholder="search Full Name">
@@ -74,6 +74,7 @@ if ($stmt) {
         </select>
         <button type="button" class="btn btn-secondary" onclick="clearFilters()">Clear</button>
         </div>
+
 <!-- MAIN USER MANAGEMENT TABLE -->
 <div class="user-table-wrapper">
     <table class="user-table">

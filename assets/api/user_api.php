@@ -46,10 +46,10 @@ if ($action === 'create') {
         echo json_encode(['success' => false, 'message' => 'Error creating user: ' . $conn->error]);
     }
     exit;
-}
+    }
 
-// GET USER (for editing)
-if ($action === 'get') {
+    // GET USER (for editing)
+    if ($action === 'get') {
     $id = intval($_GET['id'] ?? 0);
 
     if ($id <= 0) {
@@ -68,10 +68,10 @@ if ($action === 'get') {
         echo json_encode(['success' => false, 'message' => 'User not found']);
     }
     exit;
-}
+    }
 
 // EDIT USER PROCESS
-if ($action === 'update') {
+    if ($action === 'update') {
     $id = intval($_POST['id'] ?? 0);
     $name = trim($_POST['name'] ?? '');
     $username = trim($_POST['username'] ?? '');
@@ -99,11 +99,18 @@ if ($action === 'update') {
 
     // Update password if provided
     if (!empty($password)) {
+
+    // Hash password
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     $update_stmt = $conn->prepare("UPDATE users SET name=?, username=?, password=?, role=?, delete_status=? WHERE id=?");
     $update_stmt->bind_param("ssssii", $name, $username, $hashed_password, $role, $delete_status, $id);
-} else {
+
+    }
+    else {
+
     $update_stmt = $conn->prepare("UPDATE users SET name=?, username=?, role=?, delete_status=? WHERE id=?");
     $update_stmt->bind_param("sssii", $name, $username, $role, $delete_status, $id);
+
 }
 
     if ($update_stmt->execute()) {
@@ -154,32 +161,3 @@ if ($action === 'list' || empty($action)) {
     echo json_encode(['success' => true, 'data' => $users]);
     exit;
 }
-
-// FOR USERS ONLY (Edit Profile on Dropdown)
-echo json_encode(['success' => false, 'message' => 'Invalid action']);
-
-if ($action === 'get_profile') {
-
-    $id = $_SESSION['user_id'];
-
-    $stmt = $conn->prepare("SELECT id, name, username FROM users WHERE id=?");
-    $stmt->bind_param("i", $id);
-    $stmt->execute();
-
-    $result = $stmt->get_result();
-
-    if ($result->num_rows > 0) {
-        echo json_encode([
-            'success' => true,
-            'data' => $result->fetch_assoc()
-        ]);
-    } else {
-        echo json_encode([
-            'success' => false,
-            'message' => 'User not found'
-        ]);
-    }
-
-    exit;
-}
-?>

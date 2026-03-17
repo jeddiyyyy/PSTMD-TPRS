@@ -2,7 +2,7 @@
 if ($_SESSION['role'] !=='user') {
     exit;
 }
-include_once 'record_add.php';
+include_once 'add_record.php';
 include_once 'admin_modal/user_edit.php'
 //include_once 'record_delete.php';
 
@@ -23,8 +23,7 @@ include_once 'admin_modal/user_edit.php'
         </span> ▾
     </span>
             <div class="profile-dropdown" id="profileDropdown">
-            <button class="btn-editprofile" onclick="editUserModal(<?= $_SESSION['user_id'] ?>)">Edit Profile</button>
-            <button class="btn-settings" onclick="">Settings</button>
+            <button class="btn-editprofile">Edit Profile</button>
             <button class="btn-logout" onclick="logout()">Logout</button>
             </div>
         </div>
