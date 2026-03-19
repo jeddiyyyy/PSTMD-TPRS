@@ -12,10 +12,16 @@ if (!isset($_SESSION['user_id'])) {
 <head>
     <title>PSTMD-TPRS</title>
     <link rel="stylesheet" href="../assets/css/materials/bootstrap.min.css">
+    <!-- Main CSS Section -->
     <link rel="stylesheet" href="../assets/css/admindex.css">
     <link rel="stylesheet" href="../assets/css/admintable.css">
     <link rel="stylesheet" href="../assets/css/usertable.css">
+    <!-- Table CSS Section -->
+    <link rel="stylesheet" href="../assets/css/record_body.css">
+    <link rel="stylesheet" href="../assets/css/record_response.css">
     <link rel="icon" href="../assets/icon/PSTMD.png" type="image/x-icon">
+    <!-- Function CSS Section -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 </head>
 
 <header>
@@ -64,6 +70,7 @@ if ($_SESSION['role'] === 'admin') {
 
 <!-- SCRIPT FUNCTIONS -->
 <script src="../assets/js/loginlogout.js"></script>
+<script src="../assets/js/record_add.js"></script>
 
 <!-- ADMIN SCRIPTS -->
 <script src="../assets/js/adminfilter.js"></script>

@@ -35,7 +35,7 @@ include "config/config.php";
 
     <form class="login-form" id="loginForm" method="POST">
         <div class="form-group">
-            <label for="username">USERNAME*</label>
+            <label for="username">USERNAME</label>
             <div class="input-wrapper">
                 <input type="text" id="usr" name="usr" required>
 
@@ -50,7 +50,7 @@ include "config/config.php";
         </div>
 
         <div class="form-group">
-            <label for="password">PASSWORD*</label>
+            <label for="password">PASSWORD</label>
             <div class="input-wrapper">
                 <input type="password" id="pwd" name="pwd" required>
                 <button type="button" class="password-toggle" onclick="togglePassword()" title="Toggle password">
@@ -68,7 +68,7 @@ include "config/config.php";
     </form>
 </div>
 
-<footer class="footer-text">JARRELL DC - ITDO Caloocan &copy; 2026</footer>
+<footer class="footer-text">ITDO Caloocan &copy; 2026</footer>
 
 <!-- Script Components -->
 <script src="assets/js/materials/jquery-4.0.0.min.js"></script>
